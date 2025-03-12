@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartInvest - Real-Time Stock Market Insights</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-left: 2rem;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            margin-right: 2rem;
+        }
+
+        header nav ul li {
+            margin: 0 1rem;
+        }
+
+        header nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+
+        header nav ul li a.login-btn {
+            background: #007BFF;
+            border-radius: 5px;
+        }
+
+        .hero {
+            background: #f4f4f4;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #007BFF;
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .data-container, .analysis-container, 
+        .portfolio-container, .education-container, 
+        .plans-container, .community-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .plan {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            header nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">SmartInvest</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#real-time-data">Real-Time Data</a></li>
+                <li><a href="#automated-analysis">Analysis</a></li>
+                <li><a href="#portfolio-management">Portfolio</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#subscriptions">Subscriptions</a></li>
+                <li><a href="#login" class="login-btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Rest of HTML content from previous answer -->
+    <!-- [All HTML sections from the previous answer go here] -->
+
+    <script>
+        // JavaScript Code
+        document.addEventListener('DOMContentLoaded', function() {
+            // Stock Prices
+            const stockPrices = document.getElementById('stock-prices');
+            const stocks = [
+                { symbol: 'AAPL', price: 150.25 },
+                { symbol: 'GOOGL', price: 2800.50 },
+                { symbol: 'TSLA', price: 750.00 },
+            ];
+
+            stocks.forEach(stock => {
+                const stockElement = document.createElement('div');
+                stockElement.className = 'stock-item';
+                stockElement.innerHTML = `
+                    <strong>${stock.symbol}</strong>: $${stock.price.toFixed(2)}
+                `;
+                stockPrices.appendChild(stockElement);
+            });
+
+            // Financial News
+            const newsFeed = document.getElementById('news-feed');
+            const news = [
+                "Market hits all-time high!",
+                "Tech stocks surge amid earnings season.",
+                "Federal Reserve announces interest rate hike.",
+            ];
+
+            news.forEach(item => {
+                const newsItem = document.createElement('li');
+                newsItem.className = 'news-item';
+                newsItem.textContent = item;
+                newsFeed.appendChild(newsItem);
+            });
+
+            // Chart Initialization
+            const ctx = document.getElementById('trend-chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                    datasets: [{
+                        label: 'Market Index',
+                        data: [65, 59, 80, 81, 56],
+                        borderColor: '#007BFF',
+                        tension: 0.4,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
